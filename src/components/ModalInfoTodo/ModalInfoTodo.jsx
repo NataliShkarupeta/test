@@ -9,9 +9,12 @@ export const ModalInfoTodo = ({todo,close}) => {
           <h3>{todo.title}</h3>
           <p>Description: {todo.text}</p>
           <p>
-            Status:{" "}
-          
-            <Button disable="disable" type="checkbox" checked={todo.status}></Button>
+            Status: 
+            <Button
+              disable="disable"
+              type="checkbox"
+              checked={todo.status}
+            ></Button>
           </p>
           <button onClick={close}>Close</button>
         </ModalContainer>
