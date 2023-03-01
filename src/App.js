@@ -9,6 +9,12 @@ export const App = () => {
   const [todoId, setTodoId] = useState("");
   const [status, setStatus] = useState(false);
 
+  const changeStatus=(id)=>{
+    const newTodo = todos.map(todo=>todo.id === id ?{...todo,status:status}: todo)
+    setTodos(newTodo);
+  }
+
+  
   const takeTodo = (data) => {
     setTodos((prev) => [...prev, data]);
   };
@@ -27,7 +33,12 @@ export const App = () => {
     <>
       {isOpen && <ModalInfoTodo todo={todoId} close={closeModal} />}
       <FormAddTodo takeTodo={takeTodo} status={status} />
-      <TodoList todos={todos} show={showModal} setStatus={setStatus} />
+      <TodoList
+        todos={todos}
+        show={showModal}
+        setStatus={setStatus}
+        change={changeStatus}
+      />
     </>
   );
 };

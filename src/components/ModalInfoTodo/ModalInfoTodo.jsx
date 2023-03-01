@@ -1,7 +1,6 @@
-import { Overlay, ModalContainer, Button } from "./ModalInfoTodo.styled";
-// import { Check } from "../TodoList/TodoList.styled";
+import { Overlay, ModalContainer } from "./ModalInfoTodo.styled";
 export const ModalInfoTodo = ({todo,close}) => {
-    console.log(todo.status);
+    
   return (
     <>
       <Overlay>
@@ -9,12 +8,12 @@ export const ModalInfoTodo = ({todo,close}) => {
           <h3>{todo.title}</h3>
           <p>Description: {todo.text}</p>
           <p>
-            Status: 
-            <Button
-              disable="disable"
+            Status:
+            <input
               type="checkbox"
-              checked={todo.status}
-            ></Button>
+              checked={!todo.status}
+              onChange={() => {}}
+            />
           </p>
           <button onClick={close}>Close</button>
         </ModalContainer>

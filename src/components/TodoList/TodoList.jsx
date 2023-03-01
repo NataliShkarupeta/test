@@ -1,7 +1,8 @@
 import { Row } from "../Row/Row";
 import { Table } from "./TodoList.styled";
 
-export const TodoList = ({ todos, show, setStatus }) => {
+export const TodoList = ({ todos, show, setStatus, change }) => {
+  
   return (
     <Table>
       <thead>
@@ -20,8 +21,9 @@ export const TodoList = ({ todos, show, setStatus }) => {
             title={title}
             text={text}
             show={show}
-            setStatus={setStatus}
             status={status}
+            setStatus={setStatus}
+            change={change}
           />
         ))}
       </tbody>

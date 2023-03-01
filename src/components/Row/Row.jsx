@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Td, Check } from "../TodoList/TodoList.styled";
 
-export function Row({ id, title, text, status, show, setStatus }) {
+export function Row({ id, title, text,  show, setStatus, change }) {
   const [checked, setChecked] = useState(false);
 
   const handelChangeCheck = ({ target }) => {
@@ -11,6 +11,7 @@ export function Row({ id, title, text, status, show, setStatus }) {
     } else {
       setStatus(false);
     }
+    change(id);
   };
 
   return (
