@@ -11,7 +11,7 @@ export const ModalInfoTodo = ({todo,close}) => {
             Status:
             <input
               type="checkbox"
-              checked={!todo.status}
+              checked={todo.status?true:false}
               onChange={() => {}}
             />
           </p>

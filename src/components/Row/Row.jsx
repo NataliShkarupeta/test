@@ -3,7 +3,7 @@ import { Td, Check } from "../TodoList/TodoList.styled";
 
 export function Row({ id, title, text,  show, setStatus, change }) {
   const [checked, setChecked] = useState(false);
-
+// console.log(checked);
   const handelChangeCheck = ({ target }) => {
     setChecked(target.checked);
     if (!checked) {
