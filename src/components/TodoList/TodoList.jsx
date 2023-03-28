@@ -1,7 +1,8 @@
 import { Row } from "../Row/Row";
 import { Table } from "./TodoList.styled";
+import { memo } from "react";
 
-export const TodoList = ({ todos, show, setTodos }) => {
+export const TodoList = memo(({ todos, show, setTodos }) => {
   return (
     <Table>
       <thead>
@@ -19,4 +20,4 @@ export const TodoList = ({ todos, show, setTodos }) => {
       </tbody>
     </Table>
   );
-};
+});

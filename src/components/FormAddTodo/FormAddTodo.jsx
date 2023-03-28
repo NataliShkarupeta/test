@@ -1,33 +1,23 @@
-import { useState, memo } from "react";
+import { memo } from "react";
 import { Form, Label, Button } from "./FormAddTodo.styled";
 
 export const FormAddTodo = memo(({ createTodo }) => {
-  console.log("render form");
-  const [id, setId] = useState(0);
-
-  const createId = () => {
-    setId((prev) => prev + 1);
-  };
-
   const handelSubmit = (e) => {
     e.preventDefault();
     const formDAta = new FormData(e.target);
     const title = formDAta.get("title");
     const text = formDAta.get("text");
 
-    createId();
-
     createTodo((todos) => {
       const newTodo = {
         title,
         text,
         status: false,
-        id,
+        id: new Date().getTime(),
       };
       return { ...todos, [newTodo.id]: { ...newTodo } };
     });
 
-   
     e.target.reset();
   };
 
