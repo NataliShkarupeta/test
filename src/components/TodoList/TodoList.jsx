@@ -1,8 +1,8 @@
 import { Row } from "../Row/Row";
 import { Table } from "./TodoList.styled";
+import { memo } from "react";
 
-export const TodoList = ({ todos, show, setStatus, change }) => {
-  
+export const TodoList = memo(({ todos, show, setTodos }) => {
   return (
     <Table>
       <thead>
@@ -14,19 +14,10 @@ export const TodoList = ({ todos, show, setStatus, change }) => {
         </tr>
       </thead>
       <tbody>
-        {todos.map(({ title, text, id, status }) => (
-          <Row
-            key={id}
-            id={id}
-            title={title}
-            text={text}
-            show={show}
-            status={status}
-            setStatus={setStatus}
-            change={change}
-          />
+        {Object.values(todos).map((todo) => (
+          <Row key={todo.id} todo={todo} show={show} setTodos={setTodos} />
         ))}
       </tbody>
     </Table>
   );
-};
+});

@@ -1,18 +1,9 @@
-import { useState } from "react";
+import {  memo } from "react";
 import { Td, Check } from "../TodoList/TodoList.styled";
 
-export function Row({ id, title, text,  show, setStatus, change }) {
-  const [checked, setChecked] = useState(false);
-// console.log(checked);
-  const handelChangeCheck = ({ target }) => {
-    setChecked(target.checked);
-    if (!checked) {
-      setStatus(true);
-    } else {
-      setStatus(false);
-    }
-    change(id);
-  };
+export const Row = memo(({ todo, show, setTodos }) => {
+  console.log("render todo");
+  const { id, title, text, status } = todo;
 
   return (
     <tr>
@@ -21,11 +12,18 @@ export function Row({ id, title, text,  show, setStatus, change }) {
       <Td onClick={() => show(id)}>{text}</Td>
       <Td>
         <Check
-          onChange={handelChangeCheck}
           type="checkbox"
-          checked={checked}
+          value={status}
+          onClick={(e) => {
+            e.stopPropagation();
+            const { target } = e;
+            setTodos((todos) => {
+              todos[id] = { ...todos[id], status: target.checked };
+              return { ...todos };
+            });
+          }}
         ></Check>
       </Td>
     </tr>
   );
-}
+});
